@@ -209,7 +209,7 @@ show(){
   { 
     echo "$1"
     if [[ -n $1 ]]; then cat "${TMP}".index | grep "$1"; else cat "${TMP}".index; fi 
-  } | columnize | more
+  } | columnize #| less
   echo ""
 }
 
