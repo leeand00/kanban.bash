@@ -229,7 +229,7 @@ update_item_status(){
     newitem="${newitem/$status/$2}"
     newitem="${newitem/$flags/$newflags}"
     newitem="${newitem/$dates/$newdates}"
-    KANBANITEMS="$(<$KANBANFILE)"
+    KANBANITEMS="$(<"$KANBANFILE")"
     echo "${KANBANITEMS//"$item"/"$newitem"}" > "${KANBANFILE}"
     echo "$status -> $2"
   fi
@@ -244,7 +244,7 @@ update_item(){
 #
 '"$item" > "${TMP}".update
   ${EDITOR} "${TMP}".update
-  KANBANITEMS="$(<$KANBANFILE)"
+  KANBANITEMS="$(<"$KANBANFILE")"
   newitem="$(cat "${TMP}".update | tail -n1 )" 
   echo "${KANBANITEMS//"$item"/"$newitem"}" > "${KANBANFILE}"
   echo "updated item $1"
